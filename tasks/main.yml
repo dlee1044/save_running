@@ -1,0 +1,9 @@
+  - name: Save config - copy run start
+    nxos_command:
+      commands:
+        - command: 'copy running-config startup-config'
+          output: text
+      wait_for:
+        - result[0] contains "Copy complete"
+      provider: "{{ nxos_provider }}"
+    register: save_results
